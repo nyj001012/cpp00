@@ -13,7 +13,7 @@
 #ifndef CPP00_PHONEBOOK_H
 #define CPP00_PHONEBOOK_H
 
-#include "Contact.h"
+#include "Contact.hpp"
 
 class PhoneBook
 {

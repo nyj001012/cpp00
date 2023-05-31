@@ -6,7 +6,7 @@
 /*   By: yena <yena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 14:06:56 by yena              #+#    #+#             */
-/*   Updated: 2023/05/31 14:50:16 by yena             ###   ########.fr       */
+/*   Updated: 2023/05/31 14:52:06 by yena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 
 class Contact
 {
-private:
-	std::string first_name;
-	std::string last_name;
-	std::string nickname;
-	std::string phone_number;
-	std::string darkest_secret;
+	private:
+		std::string first_name;
+		std::string last_name;
+		std::string nickname;
+		std::string phone_number;
+		std::string darkest_secret;
 };
 
 #endif

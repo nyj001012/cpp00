@@ -15,7 +15,7 @@ NAME:	${OBJS}
 		${CC} ${CFLAGS} -I . -c $< -o ${<:.c=.o}
 
 clean:
-		${RM} ${OBJS} ${BONUS_OBJS}
+		${RM} ${OBJS}
 
 fclean:	clean
 		${RM} ${NAME}

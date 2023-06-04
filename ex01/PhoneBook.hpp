@@ -19,6 +19,27 @@ class PhoneBook
 {
 	private:
 		Contact contacts[8];
+
+	public:
+		PhoneBook(Contact contact, int index);
+		~PhoneBook(void);
 };
 
+PhoneBook::PhoneBook(void)
+{
+	for (int i = 0; i < 8; i++)
+	{
+		this->contacts[i] = new Contact();
+	}
+}
+
+PhoneBook::PhoneBook(Contact contact, int index)
+{
+	this->contacts[index] = contact;
+}
+
+PhoneBook::~PhoneBook(void)
+{
+
+}
 #endif

@@ -21,17 +21,10 @@ class PhoneBook
 		Contact contacts[8];
 
 	public:
+		PhoneBook(void);
 		PhoneBook(Contact contact, int index);
 		~PhoneBook(void);
 };
-
-PhoneBook::PhoneBook(void)
-{
-	for (int i = 0; i < 8; i++)
-	{
-		this->contacts[i] = new Contact();
-	}
-}
 
 PhoneBook::PhoneBook(Contact contact, int index)
 {
@@ -40,6 +33,5 @@ PhoneBook::PhoneBook(Contact contact, int index)
 
 PhoneBook::~PhoneBook(void)
 {
-
 }
 #endif

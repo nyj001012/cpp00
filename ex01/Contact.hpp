@@ -46,9 +46,10 @@ Contact::Contact(std::string first_name, std::string last_name,
 	this->nickname = nickname;
 	this->phone_number = phone_number;
 	this->darkest_secret = darkest_secret;
+	std::cout << "Contact created" << std::endl;
 }
 
-~Contact::Contact(void)
+Contact::~Contact(void)
 {
 
 }

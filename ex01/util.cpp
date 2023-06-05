@@ -6,7 +6,7 @@
 /*   By: yena <yena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 09:06:39 by yena              #+#    #+#             */
-/*   Updated: 2023/06/05 12:16:49 by yena             ###   ########.fr       */
+/*   Updated: 2023/06/05 12:37:56 by yena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,15 +33,15 @@ void	AddContact(PhoneBook phonebook)
 	if (capacity > 8)
 		std::cout << "PhoneBook has no capacity. The oldest one will be replaced." << std::endl;
 	index = capacity % 8;
-	std::cout << "Enter first name\t: ";
+	std::cout << "Enter first name   : ";
 	std::cin >> firstName;
-	std::cout << "Enter last name\t: ";
+	std::cout << "Enter last name    : ";
 	std::cin >> lastName;
-	std::cout << "Enter nickname\t: ";
+	std::cout << "Enter nickname     : ";
 	std::cin >> nickname;
-	std::cout << "Enter phoneNumber\t: ";
+	std::cout << "Enter phoneNumber  : ";
 	std::cin >> phoneNumber;
-	std::cout << "Enter darkestSecret\t: ";
+	std::cout << "Enter darkestSecret: ";
 	std::cin >> darkestSecret;
 	contact = Contact(firstName, lastName, nickname, phoneNumber, darkestSecret);
 	phonebook.SetContact(contact, index);
@@ -75,11 +75,13 @@ void	PrintContact(Contact contact)
 	std::cout << "|" << std::setw(COLUMN_WIDTH) << "First Name" << "|";
 	std::cout << std::setw(COLUMN_WIDTH) << "Last Name" << "|";
 	std::cout << std::setw(COLUMN_WIDTH) << "Nickname" << "|";
-	std::cout << std::setw(COLUMN_WIDTH) << "Phone Number" << "|" << std::endl;
+	std::cout << std::setw(COLUMN_WIDTH) << "Phone Number" << "|";
+	std::cout << std::endl;
 	std::cout << "|" << std::setw(FIELD_WIDTH) << Truncate(contact.GetFirstName()) << "|";
 	std::cout << "|" << std::setw(FIELD_WIDTH) << Truncate(contact.GetLastName()) << "|";
 	std::cout << "|" << std::setw(FIELD_WIDTH) << Truncate(contact.GetNickname()) << "|";
 	std::cout << "|" << std::setw(FIELD_WIDTH) << Truncate(contact.GetPhoneNumber()) << "|";
+	std::cout << std::endl;
 }
 
 /**
@@ -92,13 +94,20 @@ void	SearchContact(PhoneBook phoneBook)
 	int		index;
 	Contact	contact;
 
-	std::cout << "Enter index:";
+	std::cout << "Enter index: ";
 	std::cin >> index;
-	if (index < 0 || index > 7)
+	if (std::cin.fail())
+	{
+		std::cin.clear();
+		std::cin.ignore(512, '\n');
+		std::cout << "Invalid input" << std::endl;
+		return ;
+	}
+	if (index < 1 || index > 8)
 		std::cout << "Index is out of range: " << index << std::endl;
 	else
 	{
-		contact = phoneBook.GetContact(index);
+		contact = phoneBook.GetContact(index - 1);
 		PrintContact(contact);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: yena <yena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 09:09:13 by yena              #+#    #+#             */
-/*   Updated: 2023/06/05 11:13:36 by yena             ###   ########.fr       */
+/*   Updated: 2023/06/05 11:40:59 by yena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,9 @@
 # include "PhoneBook.hpp"
 # include <iostream>
 
+#define COLUMN_WIDTH 10
+
 void	AddContact(PhoneBook *phonebook);
+void	SearchContact(PhoneBook phonebook);
 
 #endif

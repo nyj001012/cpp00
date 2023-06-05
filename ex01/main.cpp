@@ -6,7 +6,7 @@
 /*   By: yena <yena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 14:06:17 by yena              #+#    #+#             */
-/*   Updated: 2023/06/05 11:32:43 by yena             ###   ########.fr       */
+/*   Updated: 2023/06/05 11:39:26 by yena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	main(void)
 		else if (command == "ADD")
 			AddContact(&phonebook);
 		else if (command == "SEARCH")
-			std::cout << "SEARCH" << std::endl;
+			SearchContact(phonebook);
 		else
 			std::cout << "Invalid command: " << command << std::endl;
 	}

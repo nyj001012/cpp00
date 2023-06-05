@@ -6,7 +6,7 @@
 /*   By: yena <yena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 09:06:39 by yena              #+#    #+#             */
-/*   Updated: 2023/06/05 11:33:00 by yena             ###   ########.fr       */
+/*   Updated: 2023/06/05 11:49:32 by yena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,4 +41,25 @@ void	AddContact(PhoneBook &phonebook)
 	std::cin >> contact.darkestSecret;
 	(*phonebook).setContact(index, contact);
 	(*phonebook).setCapacity(capacity + 1);
+}
+
+/**
+ * @brief Search contact
+ * @param phoneBook
+ * @return void
+ */
+void	SearchContact(PhoneBook phoneBook)
+{
+	int		index;
+	Contact	contact;
+
+	std::cout << "Enter index:"
+	std::cin >> index;
+	if (index < 0 || index > 7)
+		std::cout << "Index is out of range: " << index << std::endl;
+	else
+	{
+		contact = phoneBook.getContact(index);
+		PrintContact(contact);
+	}
 }

@@ -1,6 +1,8 @@
 NAME = phone_book
 SRCS = main.cpp \
-	   util.cpp
+	   util.cpp \
+	   PhoneBook.cpp \
+	   Contact.cpp
 INC = .
 OBJS = ${SRCS:.cpp=.o}
 

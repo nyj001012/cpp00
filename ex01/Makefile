@@ -7,7 +7,7 @@ INC = .
 OBJS = ${SRCS:.cpp=.o}
 
 CC = g++
-CFLAGS = -Wall -Wextra -Werror -std=c++98
+CFLAGS = -Wall -Wextra -Werror -std=c++98 -g
 RM = rm -f
 
 all: ${NAME}

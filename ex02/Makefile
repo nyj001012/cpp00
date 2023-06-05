@@ -1,5 +1,6 @@
 NAME = account
-SRCS = tests.cpp
+SRCS = tests.cpp \
+	   Account.cpp
 INC = .
 OBJS = ${SRCS:.cpp=.o}
 

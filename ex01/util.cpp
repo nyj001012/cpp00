@@ -6,11 +6,11 @@
 /*   By: yena <yena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 09:06:39 by yena              #+#    #+#             */
-/*   Updated: 2023/06/05 12:01:54 by yena             ###   ########.fr       */
+/*   Updated: 2023/06/05 12:16:49 by yena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "PhoneBook.hpp"
+#include "main.hpp"
 
 /**
  * @brief Add contact to phonebook
@@ -18,29 +18,34 @@
  * @param phonebook
  * @return void
  */
-void	AddContact(PhoneBook &phonebook)
+void	AddContact(PhoneBook phonebook)
 {
-	Contact	contact;
-	int		capacity;
-	int		index;
+	Contact		contact;
+	int			capacity;
+	int			index;
+	std::string	firstName;
+	std::string	lastName;
+	std::string	nickname;
+	std::string	phoneNumber;
+	std::string	darkestSecret;
 
 	capacity = phonebook.GetCapacity();
 	if (capacity > 8)
 		std::cout << "PhoneBook has no capacity. The oldest one will be replaced." << std::endl;
 	index = capacity % 8;
-	contact = (*phonebook).getContact(index);
 	std::cout << "Enter first name\t: ";
-	std::cin >> contact.firstName;
+	std::cin >> firstName;
 	std::cout << "Enter last name\t: ";
-	std::cin >> contact.lastName;
+	std::cin >> lastName;
 	std::cout << "Enter nickname\t: ";
-	std::cin >> contact.nickname;
+	std::cin >> nickname;
 	std::cout << "Enter phoneNumber\t: ";
-	std::cin >> contact.phoneNumber;
+	std::cin >> phoneNumber;
 	std::cout << "Enter darkestSecret\t: ";
-	std::cin >> contact.darkestSecret;
-	(*phonebook).setContact(index, contact);
-	(*phonebook).setCapacity(capacity + 1);
+	std::cin >> darkestSecret;
+	contact = Contact(firstName, lastName, nickname, phoneNumber, darkestSecret);
+	phonebook.SetContact(contact, index);
+	phonebook.SetCapacity(capacity + 1);
 }
 
 /**
@@ -71,10 +76,10 @@ void	PrintContact(Contact contact)
 	std::cout << std::setw(COLUMN_WIDTH) << "Last Name" << "|";
 	std::cout << std::setw(COLUMN_WIDTH) << "Nickname" << "|";
 	std::cout << std::setw(COLUMN_WIDTH) << "Phone Number" << "|" << std::endl;
-	std::cout << "|" << std::setw(FIELD_WIDTH) << Truncate(contact.firstName) << "|";
-	std::cout << "|" << std::setw(FIELD_WIDTH) << Truncate(contact.lastName) << "|";
-	std::cout << "|" << std::setw(FIELD_WIDTH) << Truncate(contact.nickname) << "|";
-	std::cout << "|" << std::setw(FIELD_WIDTH) << Truncate(contact.phoneNumber) << "|";
+	std::cout << "|" << std::setw(FIELD_WIDTH) << Truncate(contact.GetFirstName()) << "|";
+	std::cout << "|" << std::setw(FIELD_WIDTH) << Truncate(contact.GetLastName()) << "|";
+	std::cout << "|" << std::setw(FIELD_WIDTH) << Truncate(contact.GetNickname()) << "|";
+	std::cout << "|" << std::setw(FIELD_WIDTH) << Truncate(contact.GetPhoneNumber()) << "|";
 }
 
 /**
@@ -87,13 +92,13 @@ void	SearchContact(PhoneBook phoneBook)
 	int		index;
 	Contact	contact;
 
-	std::cout << "Enter index:"
+	std::cout << "Enter index:";
 	std::cin >> index;
 	if (index < 0 || index > 7)
 		std::cout << "Index is out of range: " << index << std::endl;
 	else
 	{
-		contact = phoneBook.getContact(index);
+		contact = phoneBook.GetContact(index);
 		PrintContact(contact);
 	}
 }

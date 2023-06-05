@@ -35,9 +35,9 @@ void	AddContact(PhoneBook &phonebook)
 	std::cin >> contact.lastName;
 	std::cout << "Enter nickname\t: ";
 	std::cin >> contact.nickname;
-	std::cout << "Enter phone_number\t: ";
+	std::cout << "Enter phoneNumber\t: ";
 	std::cin >> contact.phoneNumber;
-	std::cout << "Enter darkest_secret\t: ";
+	std::cout << "Enter darkestSecret\t: ";
 	std::cin >> contact.darkestSecret;
 	(*phonebook).setContact(index, contact);
 	(*phonebook).setCapacity(capacity + 1);
@@ -74,7 +74,7 @@ void	PrintContact(Contact contact)
 	std::cout << "|" << std::setw(FIELD_WIDTH) << Truncate(contact.firstName) << "|";
 	std::cout << "|" << std::setw(FIELD_WIDTH) << Truncate(contact.lastName) << "|";
 	std::cout << "|" << std::setw(FIELD_WIDTH) << Truncate(contact.nickname) << "|";
-	std::cout << "|" << std::setw(FIELD_WIDTH) << Truncate(contact.phone_number) << "|";
+	std::cout << "|" << std::setw(FIELD_WIDTH) << Truncate(contact.phoneNumber) << "|";
 }
 
 /**

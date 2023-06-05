@@ -6,7 +6,7 @@
 /*   By: yena <yena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 09:06:39 by yena              #+#    #+#             */
-/*   Updated: 2023/06/05 11:49:32 by yena             ###   ########.fr       */
+/*   Updated: 2023/06/05 12:01:54 by yena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,40 @@ void	AddContact(PhoneBook &phonebook)
 	std::cin >> contact.darkestSecret;
 	(*phonebook).setContact(index, contact);
 	(*phonebook).setCapacity(capacity + 1);
+}
+
+/**
+ * @brief Truncate string
+ * @details If the length of the string is more than 10, print only 9 characters and add '.' at the end.
+ * @param str
+ * @return std::string
+ */
+
+std::string	Truncate(std::string str)
+{
+	if (str.length() > 10)
+		return (str.substr(0, 9) + ".");
+	return (str);
+}
+
+/**
+ * @brief Print contact
+ * @details Print contact's first name, last name, nickname, phone number.
+ * If the length of the string is more than 10, print only 9 characters and add '.' at the end.
+ * The string is right-aligned.
+ * @param contact
+ * @return void
+ */
+void	PrintContact(Contact contact)
+{
+	std::cout << "|" << std::setw(COLUMN_WIDTH) << "First Name" << "|";
+	std::cout << std::setw(COLUMN_WIDTH) << "Last Name" << "|";
+	std::cout << std::setw(COLUMN_WIDTH) << "Nickname" << "|";
+	std::cout << std::setw(COLUMN_WIDTH) << "Phone Number" << "|" << std::endl;
+	std::cout << "|" << std::setw(FIELD_WIDTH) << Truncate(contact.firstName) << "|";
+	std::cout << "|" << std::setw(FIELD_WIDTH) << Truncate(contact.lastName) << "|";
+	std::cout << "|" << std::setw(FIELD_WIDTH) << Truncate(contact.nickname) << "|";
+	std::cout << "|" << std::setw(FIELD_WIDTH) << Truncate(contact.phone_number) << "|";
 }
 
 /**

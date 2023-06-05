@@ -6,7 +6,7 @@
 /*   By: yena <yena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 09:06:39 by yena              #+#    #+#             */
-/*   Updated: 2023/06/05 12:37:56 by yena             ###   ########.fr       */
+/*   Updated: 2023/06/05 12:54:06 by yena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 /**
  * @brief Add contact to phonebook
  * @details If phonebook has no capacity, the oldest one will be replaced.
- * @param phonebook
+ * @param *phonebook
  * @return void
  */
-void	AddContact(PhoneBook phonebook)
+void	AddContact(PhoneBook *phonebook)
 {
 	Contact		contact;
 	int			capacity;
@@ -29,9 +29,9 @@ void	AddContact(PhoneBook phonebook)
 	std::string	phoneNumber;
 	std::string	darkestSecret;
 
-	capacity = phonebook.GetCapacity();
-	if (capacity > 8)
-		std::cout << "PhoneBook has no capacity. The oldest one will be replaced." << std::endl;
+	capacity = (*phonebook).GetCapacity();
+	if (capacity >= 8)
+		std::cout << "* PhoneBook has no capacity. The oldest one will be replaced." << std::endl;
 	index = capacity % 8;
 	std::cout << "Enter first name   : ";
 	std::cin >> firstName;
@@ -44,8 +44,9 @@ void	AddContact(PhoneBook phonebook)
 	std::cout << "Enter darkestSecret: ";
 	std::cin >> darkestSecret;
 	contact = Contact(firstName, lastName, nickname, phoneNumber, darkestSecret);
-	phonebook.SetContact(contact, index);
-	phonebook.SetCapacity(capacity + 1);
+	(*phonebook).SetContact(contact, index);
+	(*phonebook).SetCapacity(capacity + 1);
+	std::cout << "* Contact created" << std::endl;
 }
 
 /**
@@ -54,7 +55,6 @@ void	AddContact(PhoneBook phonebook)
  * @param str
  * @return std::string
  */
-
 std::string	Truncate(std::string str)
 {
 	if (str.length() > 10)
@@ -100,11 +100,11 @@ void	SearchContact(PhoneBook phoneBook)
 	{
 		std::cin.clear();
 		std::cin.ignore(512, '\n');
-		std::cout << "Invalid input" << std::endl;
+		std::cout << "* Invalid input" << std::endl;
 		return ;
 	}
 	if (index < 1 || index > 8)
-		std::cout << "Index is out of range: " << index << std::endl;
+		std::cout << "* Index is out of range: " << index << std::endl;
 	else
 	{
 		contact = phoneBook.GetContact(index - 1);

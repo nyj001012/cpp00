@@ -6,7 +6,7 @@
 /*   By: yena <yena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 12:26:26 by yena              #+#    #+#             */
-/*   Updated: 2023/06/05 12:28:00 by yena             ###   ########.fr       */
+/*   Updated: 2023/06/05 12:52:22 by yena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ Contact::Contact(std::string firstName, std::string lastName,
 	this->nickname = nickname;
 	this->phoneNumber = phoneNumber;
 	this->darkestSecret = darkestSecret;
-	std::cout << "Contact created" << std::endl;
 }
 
 Contact::~Contact(void)

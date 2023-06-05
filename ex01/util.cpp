@@ -6,7 +6,7 @@
 /*   By: yena <yena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 09:06:39 by yena              #+#    #+#             */
-/*   Updated: 2023/06/05 12:54:06 by yena             ###   ########.fr       */
+/*   Updated: 2023/06/05 13:24:44 by yena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,15 +72,15 @@ std::string	Truncate(std::string str)
  */
 void	PrintContact(Contact contact)
 {
-	std::cout << "|" << std::setw(COLUMN_WIDTH) << "First Name" << "|";
-	std::cout << std::setw(COLUMN_WIDTH) << "Last Name" << "|";
-	std::cout << std::setw(COLUMN_WIDTH) << "Nickname" << "|";
-	std::cout << std::setw(COLUMN_WIDTH) << "Phone Number" << "|";
+	std::cout << "|" << std::setw(FIELD_WIDTH) << "First Name" << "|";
+	std::cout << std::setw(FIELD_WIDTH) << "Last Name" << "|";
+	std::cout << std::setw(FIELD_WIDTH) << "Nickname" << "|";
+	std::cout << std::setw(FIELD_WIDTH) << "Phone Number" << "|";
 	std::cout << std::endl;
 	std::cout << "|" << std::setw(FIELD_WIDTH) << Truncate(contact.GetFirstName()) << "|";
-	std::cout << "|" << std::setw(FIELD_WIDTH) << Truncate(contact.GetLastName()) << "|";
-	std::cout << "|" << std::setw(FIELD_WIDTH) << Truncate(contact.GetNickname()) << "|";
-	std::cout << "|" << std::setw(FIELD_WIDTH) << Truncate(contact.GetPhoneNumber()) << "|";
+	std::cout << std::setw(FIELD_WIDTH) << Truncate(contact.GetLastName()) << "|";
+	std::cout << std::setw(FIELD_WIDTH) << Truncate(contact.GetNickname()) << "|";
+	std::cout << std::setw(FIELD_WIDTH) << Truncate(contact.GetPhoneNumber()) << "|";
 	std::cout << std::endl;
 }
 

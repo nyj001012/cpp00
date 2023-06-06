@@ -6,18 +6,21 @@
 /*   By: yena <yena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 13:37:49 by yena              #+#    #+#             */
-/*   Updated: 2023/06/06 15:30:24 by yena             ###   ########.fr       */
+/*   Updated: 2023/06/06 16:15:26 by yena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Account.hpp"
 #include <iostream>
+#include <iomanip>
+#include <ctime>
 
 int Account::_nbAccounts = 0;
 
 Account::Account(int initial_deposit) {
   _accountIndex = Account::_nbAccounts++;
   _amount = initial_deposit;
+  Account::_displayTimestamp();
   std::cout << "index:" << _accountIndex << ";";
   std::cout << "amount:" << _amount << ";";
   std::cout << "created" << std::endl;
@@ -73,4 +76,18 @@ int Account::checkAmount(void) const {
 
 void Account::displayStatus(void) const {
   std::cout << "displayStatus called" << std::endl;
+}
+
+void Account::_displayTimestamp(void) {
+  std::time_t now = std::time(0);
+    std::tm *time = std::localtime(&now);
+    std::cout << "[";
+    std::cout << 1900 + time->tm_year;
+    std::cout << std::setw(2) << std::setfill('0') << 1 + time->tm_mon;
+    std::cout << std::setw(2) << std::setfill('0') << time->tm_mday;
+    std::cout << "_";
+    std::cout << std::setw(2) << std::setfill('0') << time->tm_hour;
+    std::cout << std::setw(2) << std::setfill('0') << time->tm_min;
+    std::cout << std::setw(2) << std::setfill('0' )<< time->tm_sec;
+    std::cout << "] ";
 }

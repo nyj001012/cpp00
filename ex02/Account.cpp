@@ -6,7 +6,7 @@
 /*   By: yena <yena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 13:37:49 by yena              #+#    #+#             */
-/*   Updated: 2023/06/06 16:15:26 by yena             ###   ########.fr       */
+/*   Updated: 2023/06/06 16:20:26 by yena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,12 @@
 #include <ctime>
 
 int Account::_nbAccounts = 0;
+int Account::_totalAmount = 0;
 
 Account::Account(int initial_deposit) {
   _accountIndex = Account::_nbAccounts++;
   _amount = initial_deposit;
+  _totalAmount += initial_deposit;
   Account::_displayTimestamp();
   std::cout << "index:" << _accountIndex << ";";
   std::cout << "amount:" << _amount << ";";
@@ -35,8 +37,7 @@ int Account::getNbAccounts(void) {
 }
 
 int Account::getTotalAmount(void) {
-  std::cout << "getTotalAmount called" << std::endl;
-  return (1);
+  return (Account::_totalAmount);
 }
 
 int Account::getNbDeposits(void) {
@@ -55,7 +56,11 @@ int getNbWithdrawals(void) {
 }
 
 void Account::displayAccountsInfos(void) {
-  std::cout << "displayAccountsInfos called" << std::endl;
+  Account::_displayTimestamp();
+  std::cout << "accounts:" << Account::getNbAccounts() << ";";
+  std::cout << "total:" << Account::getTotalAmount() << ";";
+  std::cout << "deposit:" << Account::getNbDeposits() << ";";
+  std::cout << "withdrawals:" << Account::getNbWithdrawals() << std::endl;
 }
 
 void Account::makeDeposit(int deposit) {
@@ -80,14 +85,14 @@ void Account::displayStatus(void) const {
 
 void Account::_displayTimestamp(void) {
   std::time_t now = std::time(0);
-    std::tm *time = std::localtime(&now);
-    std::cout << "[";
-    std::cout << 1900 + time->tm_year;
-    std::cout << std::setw(2) << std::setfill('0') << 1 + time->tm_mon;
-    std::cout << std::setw(2) << std::setfill('0') << time->tm_mday;
-    std::cout << "_";
-    std::cout << std::setw(2) << std::setfill('0') << time->tm_hour;
-    std::cout << std::setw(2) << std::setfill('0') << time->tm_min;
-    std::cout << std::setw(2) << std::setfill('0' )<< time->tm_sec;
-    std::cout << "] ";
+  std::tm *time = std::localtime(&now);
+  std::cout << "[";
+  std::cout << 1900 + time->tm_year;
+  std::cout << std::setw(2) << std::setfill('0') << 1 + time->tm_mon;
+  std::cout << std::setw(2) << std::setfill('0') << time->tm_mday;
+  std::cout << "_";
+  std::cout << std::setw(2) << std::setfill('0') << time->tm_hour;
+  std::cout << std::setw(2) << std::setfill('0') << time->tm_min;
+  std::cout << std::setw(2) << std::setfill('0') << time->tm_sec;
+  std::cout << "] ";
 }

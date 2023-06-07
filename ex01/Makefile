@@ -6,7 +6,7 @@ SRCS = main.cpp \
 INC = .
 OBJS = ${SRCS:.cpp=.o}
 
-CC = g++
+CC = clang++
 CFLAGS = -Wall -Wextra -Werror -std=c++98 -g
 RM = rm -f
 

@@ -17,7 +17,7 @@ int main(void) {
   PhoneBook phonebook = PhoneBook();
 
   while (true) {
-    std::cout << "Enter command: ";
+    std::cout << "\033[0;35m[ INPUT ]\033[0m * Enter command: ";
     std::cin >> command;
     if (command == "EXIT")
       break;
@@ -26,7 +26,7 @@ int main(void) {
     else if (command == "SEARCH")
       SearchContact(phonebook);
     else
-      std::cout << "* Invalid command: " << command << std::endl;
+      std::cout << "\033[0;31m* Invalid command: \033[0m" << command << std::endl;
   }
   return (0);
 }

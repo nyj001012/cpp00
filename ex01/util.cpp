@@ -30,22 +30,23 @@ void AddContact(PhoneBook *phonebook) {
 
   capacity = (*phonebook).GetCapacity();
   if (capacity >= 8)
-    std::cout << "* PhoneBook has no capacity. The oldest one will be replaced." << std::endl;
+    std::cout << "\033[0;33m * PhoneBook has no capacity."
+                 " The oldest one will be replaced.\033[0m" << std::endl;
   index = capacity % 8;
-  std::cout << "Enter first name   : ";
+  std::cout << "\033[0;36m[ ADD ]\033[0m Enter first name    : ";
   std::cin >> first_name;
-  std::cout << "Enter last name    : ";
+  std::cout << "\033[0;36m[ ADD ]\033[0m Enter last name     : ";
   std::cin >> last_name;
-  std::cout << "Enter nickname     : ";
+  std::cout << "\033[0;36m[ ADD ]\033[0m Enter nickname      : ";
   std::cin >> nickname;
-  std::cout << "Enter phone_number  : ";
+  std::cout << "\033[0;36m[ ADD ]\033[0m Enter phone_number  : ";
   std::cin >> phone_number;
-  std::cout << "Enter darkest_secret: ";
+  std::cout << "\033[0;36m[ ADD ]\033[0m Enter darkest_secret: ";
   std::cin >> darkest_secret;
   contact = Contact(first_name, last_name, nickname, phone_number, darkest_secret);
   (*phonebook).SetContact(contact, index);
   (*phonebook).SetCapacity(capacity + 1);
-  std::cout << "* Contact created" << std::endl;
+  std::cout << "\033[0;32m* Contact created\033[0m" << std::endl;
 }
 
 /**
@@ -90,16 +91,16 @@ void SearchContact(PhoneBook phoneBook) {
   int index;
   Contact contact;
 
-  std::cout << "Enter index: ";
+  std::cout << "\033[0;34m[ SEARCH ]\033[0m Enter index: ";
   std::cin >> index;
   if (std::cin.fail()) {
     std::cin.clear();
     std::cin.ignore(512, '\n');
-    std::cout << "* Invalid input" << std::endl;
+    std::cout << "\033[0;31m* Invalid input\033[0m" << std::endl;
     return;
   }
   if (index < 1 || index > 8)
-    std::cout << "* Index is out of range: " << index << std::endl;
+    std::cout << "\033[0;31m* Index is out of range\033[0m" << std::endl;
   else {
     contact = phoneBook.GetContact(index - 1);
     PrintContact(contact);
